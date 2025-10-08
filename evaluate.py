@@ -5,10 +5,10 @@ import numpy as np
 
 print("Starting evaluation...")
 
-# --- Load saved model ---
+#Load saved model 
 model = load_model("brain_tumor_model.h5")  # or use .keras if you saved it that way
 
-# --- Evaluate on test data ---
+#Evaluate on test data
 test_datagen = ImageDataGenerator(rescale=1./255)
 test_data = test_datagen.flow_from_directory(
     "data/Testing",
@@ -21,7 +21,7 @@ loss, accuracy = model.evaluate(test_data)
 print(f"\nTest Loss: {loss}")
 print(f"Test Accuracy: {accuracy}\n")
 
-# --- Predict a single image ---
+#Predict a single image
 # Change this path to the image you want to test
 img_path = "data/Testing/meningioma/Tetrite1.png" #input the file name of the image you want to be scanned, this CNN does not handle outside data well
 img = load_img(img_path, target_size=(150,150))  # <-- use load_img from utils
